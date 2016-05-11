@@ -28,7 +28,7 @@ methodun icinde asagidaki kod eklenir:
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
 
 3) App Transportation Security Kapatilmasi
 
@@ -47,7 +47,7 @@ methodun icinde asagidaki kod eklenir :
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
 
 3) App Transportation Security Kapatilmasi
 
