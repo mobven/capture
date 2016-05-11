@@ -27,7 +27,9 @@ methodun icinde asagidaki kod eklenir:
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
+
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+
 3) App Transportation Security Kapatilmasi
 
 ####AppDelegate.m Dosyasina:
@@ -68,7 +70,8 @@ dependencies {
 }
 ```
 
-3.Activity’nin override methodları olan; *onCreate
+3.Activity’nin override methodları olan; 
+*onCreate
 *onResume
 *onPause
 **dispatchKeyEvent
