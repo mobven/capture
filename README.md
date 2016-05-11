@@ -35,7 +35,11 @@ Add MobvenBugKit.framework
 ####AppDelegate.m Dosyasina:
 ```
 #import <MobvenBugKit/MobvenBugKit.h>
-didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir : [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
+didFinishLaunchingWithOptions
+```
+methodun icinde asagidaki kod eklenir : 
+```
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
 ####Embedded Framework Kullanimi //Swift // —————
@@ -50,7 +54,10 @@ Add MobvenBugKit.framework
 ####AppDelegate Dosyasina:
 ```
 import MobvenBugKit
-didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir :
+didFinishLaunchingWithOptions
+```
+methodun icinde asagidaki kod eklenir :
+```
 let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un- signedInteger:InvocationType.FloatingButton.rawValue)]
 MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
 ```
