@@ -40,7 +40,9 @@ didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir : [MobvenBug
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
+
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+
 3) App Transportation Security Kapatilmasi
 
 ####AppDelegate Dosyasina:
@@ -72,7 +74,7 @@ dependencies {
 **dispatchKeyEvent
 methodlarına örnekteki gibi BugTracker eklenir.
 
-**Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
+####**Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
 
 ```
 public void dispatchKeyEvent(Key event event);
