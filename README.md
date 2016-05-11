@@ -11,7 +11,16 @@ Static Lib Gereklilikleri :
 AppDelegate.m Dosyasina
 
 ```
-#import "MobvenBugReporter.h" seklinde import edilir. didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir : [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
+#import "MobvenBugReporter.h"
+``` 
+seklinde import edilir. 
+```
+didFinishLaunchingWithOptions
+```
+methodun icinde asagidaki kod eklenir : 
+
+```
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
 Embedded Framework Kullanimi //Objective C // ----------
@@ -65,7 +74,10 @@ methodlarına örnekteki gibi BugTracker eklenir.
 
 **Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
 
-public void dispatchKeyEvent(Key event event); methodunu override edit Bug- Tracker.dispatchKeyEvent(KeyEvent event); methodunu çağırmanız gerekmektedir. 
+```
+public void dispatchKeyEvent(Key event event);
+```
+methodunu override edip Bug-Tracker.dispatchKeyEvent(KeyEvent event); methodunu çağırmanız gerekmektedir. 
 
 ```
 public class MainActivity extends AppCompatActivity {
