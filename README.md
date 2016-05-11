@@ -2,39 +2,50 @@
 
 ##İOS
 
-Static Lib Gereklilikleri :
+####Static Lib Gereklilikleri :
 
 1) App Transportation Security Kapatilmasi
 
 2) Target -> Build Settings -> Arama kismina “other linker flag” yazilip ilgili yere -ObjC -all_load eklenecek.
 
-AppDelegate.m Dosyasina
+####AppDelegate.m Dosyasina
 
 ```
-#import "MobvenBugReporter.h" seklinde import edilir. didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir : [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
+#import "MobvenBugReporter.h"
+``` 
+seklinde import edilir. 
+```
+didFinishLaunchingWithOptions
+```
+methodun icinde asagidaki kod eklenir: 
+
+```
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-Embedded Framework Kullanimi //Objective C // ----------
+####Embedded Framework Kullanimi //Objective C // ----------
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
 3) App Transportation Security Kapatilmasi
 
-AppDelegate.m Dosyasina
+####AppDelegate.m Dosyasina:
 ```
 #import <MobvenBugKit/MobvenBugKit.h>
 didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir : [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-Embedded Framework Kullanimi //Swift // —————
+####Embedded Framework Kullanimi //Swift // —————
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
+
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+
 3) App Transportation Security Kapatilmasi
 
-AppDelegate Dosyasina
+####AppDelegate Dosyasina:
 ```
 import MobvenBugKit
 didFinishLaunchingWithOptions methodun icinde asagidaki kod eklenir :
@@ -63,9 +74,12 @@ dependencies {
 **dispatchKeyEvent
 methodlarına örnekteki gibi BugTracker eklenir.
 
-**Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
+####**Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
 
-public void dispatchKeyEvent(Key event event); methodunu override edit Bug- Tracker.dispatchKeyEvent(KeyEvent event); methodunu çağırmanız gerekmektedir. 
+```
+public void dispatchKeyEvent(Key event event);
+```
+methodunu override edip Bug-Tracker.dispatchKeyEvent(KeyEvent event); methodunu çağırmanız gerekmektedir. 
 
 ```
 public class MainActivity extends AppCompatActivity {
