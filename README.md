@@ -2,7 +2,7 @@
 
 ##İOS
 
-Capture çalışması için gerçek cihaz gereklidir.
+*** Capture çalışması için gerçek cihaz gereklidir.
 
 ####Static Lib Gereklilikleri :
 
