@@ -2,9 +2,11 @@
 
 ##İOS
 
+Capture çalışması için gerçek cihaz gereklidir.
+
 ####Static Lib Gereklilikleri :
 
-1) App Transportation Security Kapatilmasi
+1) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
 
 2) Target -> Build Settings -> Arama kismina “other linker flag” yazilip ilgili yere -ObjC -all_load eklenecek.
 
@@ -20,7 +22,7 @@ didFinishLaunchingWithOptions
 methodun icinde asagidaki kod eklenir: 
 
 ```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" invokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
 ####Embedded Framework Kullanimi //Objective C // ----------
@@ -30,7 +32,7 @@ Add MobvenBugKit.framework
 
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
 
-3) App Transportation Security Kapatilmasi
+3) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
 
 ####AppDelegate.m Dosyasina:
 ```
@@ -39,7 +41,7 @@ didFinishLaunchingWithOptions
 ```
 methodun icinde asagidaki kod eklenir : 
 ```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" invokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
 ####Embedded Framework Kullanimi //Swift // —————
@@ -49,7 +51,7 @@ Add MobvenBugKit.framework
 
 2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
 
-3) App Transportation Security Kapatilmasi
+3) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
 
 ####AppDelegate Dosyasina:
 ```
@@ -58,8 +60,8 @@ didFinishLaunchingWithOptions
 ```
 methodun icinde asagidaki kod eklenir :
 ```
-let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un- signedInteger:InvocationType.FloatingButton.rawValue)]
-MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
+let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(unsignedInteger:InvocationType.FloatingButton.rawValue)]
+MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", invokeTypes:types)
 ```
 
 ## Android
