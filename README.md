@@ -1,4 +1,4 @@
-# Capture
+# Capture Mobile (http://capture-mobile.com/)
 
 ##İOS
 
