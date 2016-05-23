@@ -91,7 +91,7 @@ repositories {
 flatDir { dirs 'libs'} 
 }
 dependencies { 
-  compile(name:’bugtrackerlibrary', ext:'aar')
+  compile(name:'bugtrackerlibrary', ext:'aar')
 }
 ```
 
