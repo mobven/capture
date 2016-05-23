@@ -1,132 +1,148 @@
-# Capture Mobile 
-## http://capture-mobile.com/
 
-##İOS
+Capture
+==================
 
-*** Capture çalışması için gerçek cihaz gereklidir.
+  - [About](#about)
+  - [Usage](#usage)
+    - [IOS](#ios)
+    - [Android](#android)
+  - [Links](#links)
 
-####Static Lib Gereklilikleri :
 
-1) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
+## About
 
-2) Target -> Build Settings -> Arama kismina “other linker flag” yazilip ilgili yere -ObjC -all_load eklenecek.
+Capture makes reporting bugs easy, which increases the productivity of your test engineers; standardized reporting enables your developers to focus on fixing the bug instead of finding and reproducing it.
 
-####AppDelegate.m Dosyasina
+Capture greatly improves your mobile testing processes.
+Just shake the phone to report a bug and be amazed how
+easy it can be.
+
+
+## Usage
+
+###IOS:
+
+####Static Lib Requirements :
+
+1) Turn off App Transportation Security
+
+2) Target -> Build Settings -> Write “other linker flag” to search and add -ObjC -all_load to the related place
+
+####To AppDelegate.m file
 
 ```
 #import "MobvenBugReporter.h"
 ``` 
-seklinde import edilir. 
+import in this way. 
 ```
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir: 
+add the following code in the method above:
 
 ```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" invokeTypes:@[@(Shake), @(FloatingButton)]];
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-####Embedded Framework Kullanimi //Objective C // ----------
+####Usage of Embedded Framework//Objective C // ----------
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
+2) Target -> Build Settings -> Write "Bitcode" to search and set the related place as 'YES'
 
-3) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
+3) Turn off App Transportation Security
 
-####AppDelegate.m Dosyasina:
+####To the AppDelegate.m File:
 ```
 #import <MobvenBugKit/MobvenBugKit.h>
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir : 
+add the following code in the method above: 
 ```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" invokeTypes:@[@(Shake), @(FloatingButton)]];
+[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-####Embedded Framework Kullanimi //Swift // —————
+####Usage of Embedded Framework//Swift // —————
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer NO olarak set edilir
+2) Target -> Build Settings -> Write "Bitcode" to Search and set the related place as 'YES'
 
-3) App Transportation Security Kapatilmasi - "App Transport Security Settings" - "Allow Arbitrary Loads" YES olarak ayarlanması
+3) Turn off App Transportation Security
 
-####AppDelegate Dosyasina:
+####To the AppDelegate file:
 ```
 import MobvenBugKit
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir :
+add the following code to the method above:
 ```
-let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(unsignedInteger:InvocationType.FloatingButton.rawValue)]
-MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", invokeTypes:types)
+let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un- signedInteger:InvocationType.FloatingButton.rawValue)]
+MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
 ```
 
-## Android
+###Android:
 
-1.aar dosyasını projeye eklemek için; aar dosyasını lib klasörüne kopyalayın.
+####1. To add aar file to project, copy aar file to lib folder
 
-2. gradle.build dosyasınıza şu satırları ekleyin: 
-
-```
+```gradle
 repositories {
 flatDir { dirs 'libs'} 
 }
 dependencies { 
-  compile(name:’bugtrackerlibrary-release', ext:'aar')
+  compile(name:’bugtrackerlibrary', ext:'aar')
 }
 ```
 
-3.Activity’nin override methodları olan; 
-*onCreate
-*onResume
-*onPause
-**dispatchKeyEvent
-methodlarına örnekteki gibi BugTracker eklenir.
+####2. Add BugTracker to Override methods of activity as you see on the example. 
 
-####**Opsiyonel :"2 finder swipe", "volume up/down” eventlerin çalışabilmesi için aktivitelerinizin
+####3. (Optional) To be able to turn on events like”2 finger swipe", "volume up/down” your activities should override
 
-```
-public void dispatchKeyEvent(Key event event);
-```
-methodunu override edip Bug-Tracker.dispatchKeyEvent(KeyEvent event); methodunu çağırmanız gerekmektedir. 
+```public void dispatchKeyEvent(Key event);```method and  ```BugTracker.dispatchKeyEvent(KeyEvent event);``` method should be called.
 
-```
+```java
 public class MainActivity extends AppCompatActivity {
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
 
-//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
+		//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
 
-/**
-* public enum TRACKEVENT {
-* SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN */
-BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTrack- er.TRACKEVENT.SHAKE, true);
- 
-//Attach on onCreate
-BugTracker.onCreate(this); 
-}
+		/**
+		 * public enum TRACKEVENT
+		 * SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN 
+		 */
+		BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTracker.TRACKEVENT.SHAKE, true);
 
-@Override
-public void onResume() {
-super.onResume();
-// Add theme following line to register the Session Manager Listener onResume BugTracker.onResume(this);
-}
+		//Attach on onCreate
+		BugTracker.onCreate(this);
+	}
 
-@Override
-public void onPause() {
-// Add the following line to unregister the Sensor Manager onPause BugTracker.onPause(this);
-super.onPause(); 
-}
+	@Override
+	public void onResume() {
+		super.onResume();
+		// Add theme following line to register the Session Manager Listener onResume 
+		BugTracker.onResume(this);
+	}
 
-@Override
-public boolean dispatchKeyEvent(KeyEvent event) {
-//Register for dispatchKeyEvent BugTracker.dispatchKeyEvent(event); return super.dispatchKeyEvent(event);
-} 
+	@Override
+	public void onPause() {
+		// Add the following line to unregister the Sensor Manager onPause 
+		BugTracker.onPause(this);
+		super.onPause();
+	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		//Register for dispatchKeyEvent 
+		BugTracker.dispatchKeyEvent(event);
+		return super.dispatchKeyEvent(event);
+	}
 }
 ```
+
+
+## Links
+[http://www.capture-mobile.com](http://www.capture-mobile.com)
