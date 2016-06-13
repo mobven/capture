@@ -143,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+####4. (Optional) 
+
+```java
+//If you use this code you will recieve logs from JIRA to your e-mail.
+Log.i("Log","info")
+```
 
 ## Links
 [http://www.capture-mobile.com](http://www.capture-mobile.com)
