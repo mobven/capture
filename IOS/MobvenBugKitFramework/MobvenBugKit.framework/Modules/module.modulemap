@@ -1,0 +1,6 @@
+framework module MobvenBugKit {
+  umbrella header "MobvenBugKit.h"
+
+  export *
+  module * { export * }
+}
