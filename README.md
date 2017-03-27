@@ -4,7 +4,7 @@ Capture
 
   - [About](#about)
   - [Usage](#usage)
-    - [IOS](#ios)
+    - [IOS](http://github.com/mobven/capture-ios)
     - [Android](#android)
   - [Links](#links)
 
@@ -19,68 +19,6 @@ easy it can be.
 
 
 ## Usage
-
-###IOS:
-
-####Static Lib Requirements :
-
-1) Turn off App Transportation Security
-
-2) Target -> Build Settings -> Write “other linker flag” to search and add -ObjC -all_load to the related place
-
-####To AppDelegate.m file
-
-```
-#import "MobvenBugReporter.h"
-``` 
-import in this way. 
-```
-didFinishLaunchingWithOptions
-```
-add the following code in the method above:
-
-```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
-```
-
-####Usage of Embedded Framework//Objective C // ----------
-
-1) Target-> General -> Embedded Binaries
-Add MobvenBugKit.framework
-
-2) Target -> Build Settings -> Write "Bitcode" to search and set the related place as 'YES'
-
-3) Turn off App Transportation Security
-
-####To the AppDelegate.m File:
-```
-#import <MobvenBugKit/MobvenBugKit.h>
-didFinishLaunchingWithOptions
-```
-add the following code in the method above: 
-```
-[MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
-```
-
-####Usage of Embedded Framework//Swift // —————
-
-1) Target-> General -> Embedded Binaries
-Add MobvenBugKit.framework
-
-2) Target -> Build Settings -> Write "Bitcode" to Search and set the related place as 'YES'
-
-3) Turn off App Transportation Security
-
-####To the AppDelegate file:
-```
-import MobvenBugKit
-didFinishLaunchingWithOptions
-```
-add the following code to the method above:
-```
-let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un- signedInteger:InvocationType.FloatingButton.rawValue)]
-MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
-```
 
 ###Android:
 
