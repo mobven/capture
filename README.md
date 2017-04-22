@@ -81,6 +81,25 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+
+####4. Add BroadCast Receiver to your app (if you have a receiver please add only if control)
+
+```java
+public class ReceiveMessages extends BroadcastReceiver {
+ public static final String CAPTURE_APP_NAME = "com.mobven.bugtrackerlibrary";
+    @Override
+    public void onReceive(Context context, Intent intent)
+    {
+        String action = intent.getAction();
+        if(action.equalsIgnoreCase(CAPTURE_APP_NAME)){
+            
+	    // Do here whatever you want on Capture Success response 
+	
+        }
+    }
+}
+```
+
 ####4. (Optional) 
 
 ```java
