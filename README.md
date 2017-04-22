@@ -100,7 +100,7 @@ public class ReceiveMessages extends BroadcastReceiver {
 }
 ```
 
-####4. (Optional) 
+####5. (Optional) 
 
 ```java
 //If you use this code you will recieve logs from JIRA to your e-mail.
