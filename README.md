@@ -45,7 +45,7 @@ public class MyApplication extends Application {
 		 * public enum TRACKEVENT
 		 * OVERLAY, SHAKE 
 		 */
-		BugTracker.initialize(this, TrackEvent.SHAKE, isCrashReportActive, appId, projectId, secret);
+		Capture.init(this, TrackEvent.SHAKE, isCrashReportActive, appId, projectId, secret);
 	}
 }
 ```
