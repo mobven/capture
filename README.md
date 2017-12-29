@@ -29,82 +29,25 @@ repositories {
 flatDir { dirs 'libs'} 
 }
 dependencies { 
-  compile(name:'bugtrackerlibrary', ext:'aar')
+  compile(name:'library-debug', ext:'aar')
 }
 ```
 
-####2. Add BugTracker to Override methods of activity as you see on the example. 
-
-####3. (Optional) To be able to turn on events like”2 finger swipe", "volume up/down” your activities should override
-
-```public void dispatchKeyEvent(Key event);```method and  ```BugTracker.dispatchKeyEvent(KeyEvent event);``` method should be called.
+####2. Initialize Capture instance in Application class. 
 
 ```java
-public class MainActivity extends AppCompatActivity {
+public class MyApplication extends Application {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
-
-		//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
-
+	public void onCreate() {
+		//Initilizing the Capture String appId=""; String secret=""; String projectId="";
 		/**
 		 * public enum TRACKEVENT
-		 * SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN 
+		 * OVERLAY, SHAKE 
 		 */
-		BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTracker.TRACKEVENT.SHAKE, true);
-
-		//Attach on onCreate
-		BugTracker.onCreate(this);
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		// Add theme following line to register the Session Manager Listener onResume 
-		BugTracker.onResume(this);
-	}
-
-	@Override
-	public void onPause() {
-		// Add the following line to unregister the Sensor Manager onPause 
-		BugTracker.onPause(this);
-		super.onPause();
-	}
-
-	@Override
-	public boolean dispatchKeyEvent(KeyEvent event) {
-		//Register for dispatchKeyEvent 
-		BugTracker.dispatchKeyEvent(event);
-		return super.dispatchKeyEvent(event);
+		BugTracker.initialize(this, TrackEvent.SHAKE, isCrashReportActive, appId, projectId, secret);
 	}
 }
-```
-
-
-####4. Add BroadCast Receiver to your app (if you have a receiver please add only if control)
-
-```java
-public class ReceiveMessages extends BroadcastReceiver {
- public static final String CAPTURE_APP_NAME = "com.mobven.bugtrackerlibrary";
-    @Override
-    public void onReceive(Context context, Intent intent)
-    {
-        String action = intent.getAction();
-        if(action.equalsIgnoreCase(CAPTURE_APP_NAME)){
-            
-	    // Do here whatever you want on Capture Success response 
-	
-        }
-    }
-}
-```
-
-####5. (Optional) 
-
-```java
-//If you use this code you will recieve logs from JIRA to your e-mail.
-Log.i("Log","info")
 ```
 
 ## Links
