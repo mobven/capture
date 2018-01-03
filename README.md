@@ -29,7 +29,7 @@ repositories {
 flatDir { dirs 'libs'} 
 }
 dependencies { 
-  compile(name:'library-debug', ext:'aar')
+  compile(name:'ARR FILE NAME', ext:'aar')
 }
 ```
 
@@ -40,12 +40,12 @@ public class MyApplication extends Application {
 
 	@Override
 	public void onCreate() {
-		//Initilizing the Capture String appId=""; String secret=""; String projectId="";
+		//Initilizing the Capture String appId=""; String secret=""; String projectId="", boolean isDebugLogEnable;
 		/**
 		 * public enum TRACKEVENT
 		 * OVERLAY, SHAKE 
 		 */
-		Capture.init(this, TrackEvent.OVERLAY, isCrashReportActive, appId, projectId, secret);
+		Capture.init(this, TrackEvent.OVERLAY, isCrashReportActive, appId, projectId, secret, isDebugLogEnable);
 	}
 }
 ```
