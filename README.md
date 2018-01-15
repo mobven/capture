@@ -22,32 +22,28 @@ easy it can be.
 
 ###Android:
 
-####1. To add aar file to project, copy aar file to lib folder
+####1. In project gradle file add following maven repository 
 
 ```gradle
-repositories {
-flatDir { dirs 'libs'} 
-}
-dependencies { 
-  compile(name:'ARR FILE NAME', ext:'aar')
-}
+allprojects {
+  repositories {
+    ...
+    maven {
+      url "http://capture.mobven.com:8081/artifactory/libs-release-local"
+      credentials {
+        username = "ARTIFACTORY_USERNAME"
+        password = "ARTIFACTORY_PASSWORD"
+      }
+    }
+  }
 ```
 
-####2. Initialize Capture instance in Application class. 
+####2. In app gradle file add following dependency
 
-```java
-public class MyApplication extends Application {
-
-	@Override
-	public void onCreate() {
-		//Initilizing the Capture String appId=""; String secret=""; String projectId="", boolean isDebugLogEnable;
-		/**
-		 * public enum TRACKEVENT
-		 * OVERLAY, SHAKE 
-		 */
-		Capture.init(this, TrackEvent.OVERLAY, isCrashReportActive, appId, projectId, secret, isDebugLogEnable);
-	}
-}
+```gradle
+compile ('com.mobven.capture:library:1.0.3@aar'){
+        transitive = true
+    }
 ```
 
 ## Links
