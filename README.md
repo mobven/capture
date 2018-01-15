@@ -46,5 +46,11 @@ compile ('com.mobven.capture:library:1.0.3@aar'){
     }
 ```
 
+####3. Init Capture in application class
+```gradle
+Capture.init(this, TrackEvent.OVERLAY, boolean isCrashReportActive, int appId, int projectId, int secret, boolean isDebugLogEnable);
+```
+
+
 ## Links
 [http://www.capture-mobile.com](http://www.capture-mobile.com)
