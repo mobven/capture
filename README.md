@@ -20,7 +20,13 @@ easy it can be.
 
 ## Usage
 
-###Android:
+### Android
+
+Capture needs to add WRITE_EXTERNAL_STORAGE permission on Manifest.
+
+```xml
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="replace"/>
+```
 
 ####1. In project gradle file add following maven repository 
 
