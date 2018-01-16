@@ -23,6 +23,7 @@ easy it can be.
 ### Android
 
 Capture needs to add WRITE_EXTERNAL_STORAGE permission on Manifest.
+TrackEvent can be SHAKE or OVERLAY
 
 ```xml
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="replace"/>
@@ -47,7 +48,7 @@ allprojects {
 ####2. In app gradle file add following dependency
 
 ```gradle
-compile ('com.mobven.capture:library:1.0.6@aar'){
+compile ('com.mobven.capture:library:1.0.7@aar'){
         transitive = true
     }
 ```
