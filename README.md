@@ -29,7 +29,7 @@ TrackEvent can be SHAKE or OVERLAY
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="replace"/>
 ```
 
-####1. In project gradle file add following maven repository 
+### 1. In project gradle file add following maven repository 
 
 ```gradle
 allprojects {
@@ -45,19 +45,17 @@ allprojects {
   }
 ```
 
-####2. In app gradle file add following dependency
+### 2. In app gradle file add following dependency
 
 ```gradle
-compile ('com.mobven.capture:library:1.0.7@aar'){
+compile ('com.mobven.capture:library:1.0.8@aar'){
         transitive = true
     }
 ```
 
-####3. Init Capture in application class
+### 3. Init Capture in application class
 ```gradle
 Capture.init(this, TrackEvent.OVERLAY, boolean isCrashReportActive, int appId, int projectId, int secret, boolean isDebugLogEnable);
 ```
-
-
 ## Links
 [http://www.capture-mobile.com](http://www.capture-mobile.com)
