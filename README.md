@@ -48,12 +48,15 @@ allprojects {
 ### 2. In app gradle file add following dependency
 
 ```gradle
-compile ('com.mobven.capture:library:1.0.8@aar'){
+compile ('com.mobven.capture:library:1.1.1@aar'){
         transitive = true
     }
 ```
 
 ### 3. Init Capture in application class
+
+If you do not have Application class, create new one then add to your manifest file.
+
 ```gradle
 Capture.init(this, TrackEvent.OVERLAY, boolean isCrashReportActive, int appId, int projectId, int secret, boolean isDebugLogEnable);
 ```
