@@ -48,7 +48,7 @@ allprojects {
 ### 2. In app gradle file add following dependency
 
 ```gradle
-compile ('com.mobven.capture:library:1.1.1@aar'){
+compile ('com.mobven.capture:library:1.1.2@aar'){
         transitive = true
     }
 ```
