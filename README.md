@@ -17,6 +17,14 @@ Capture greatly improves your mobile testing processes.
 Just shake the phone to report a bug and be amazed how
 easy it can be.
 
+## Needs Permissions
+
+Capture needs runtime permissions to work properly.
+
+WRITE_EXTERNAL_STORAGE
+READ_EXTERNAL_STORAGE
+RECORD_AUDIO
+CAMERA
 
 ## Usage
 
@@ -48,7 +56,7 @@ allprojects {
 ### 2. In app gradle file add following dependency
 
 ```gradle
-compile ('com.mobven.capture:library:1.1.5@aar'){
+compile ('com.mobven.capture:library:1.2.3@aar'){
         transitive = true
     }
 ```
