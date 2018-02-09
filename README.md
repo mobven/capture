@@ -21,10 +21,10 @@ easy it can be.
 
 Capture needs runtime permissions to work properly.
 
-WRITE_EXTERNAL_STORAGE
-READ_EXTERNAL_STORAGE
-RECORD_AUDIO
-CAMERA
+- WRITE_EXTERNAL_STORAGE
+- READ_EXTERNAL_STORAGE
+- RECORD_AUDIO
+- CAMERA
 
 ## Usage
 
